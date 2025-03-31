@@ -9,66 +9,116 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Krona+One&display=swap" rel="stylesheet">
 
     <title>The Steam Game Tracker and Social Hub</title>
 
-
-
-
     <style>
-
-        .rubik-glitch-regular {
-            font-family: "Rubik Glitch", system-ui;
-            font-weight: 400;
-            font-style: normal;
+        body {
+            font-family: 'Krona One', sans-serif;
+            background-image: url('Insert the image link here!');
+            background-size: cover;
+            color: #E4E4E4;
+            margin: 0;
+            padding: 0;
+            padding-top: 60px;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
         }
-
-
-
-        h1 {
-
-        font-family: "Rubik Glitch";
-        font-size: 20px;
-    }
-
+        header {
+            background-image: url('Insert the image link here!');
+            background-size: cover;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 36px;
+            color: #66c0f4;
+            animation: colorChange 3s infinite;
+        }
+        nav {
+            background-image: url('Insert the image link here!');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+        nav a {
+            color: #E4E4E4;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        nav a:hover {
+            color: #66c0f4;
+        }
+        .hero {
+            background-image: url('Insert the image link here!');
+            background-size: cover;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 28px;
+            text-align: center;
+        }
+        .hero h2 {
+            animation: fadeInOut 3s infinite;
+        }
+        @keyframes colorChange {
+            0% {
+                color: #66c0f4;
+            }
+            33% {
+                color: #000000;
+            }
+            66% {
+                color: #808080;
+            }
+            100% {
+                color: #66c0f4;
+            }
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
     </style>
-
-
-
-
-
-    <script>
-
-
-
-
-
-    </script>
-
-
 </head>
-
-
-
-
-
 
 <body>
 
-<div class = "container">
-    <div class = "row">
-        <div class = "col-md-3"></div>
-        <div class = "col-md-7"><h1>The Steam Game Tracker and Social Hub</h1></div>
-    </div>
+<header>
+    <h1>Steam Game Tracker & Social Hub</h1>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Games</a>
+    <a href="#">Friends</a>
+    <a href="#">Stats</a>
+    <a href="#">Community</a>
+    <a href="#">Profile</a>
+</nav>
+
+<div class="hero">
+    <h2>Track your games, stats, and connect with your friends!</h2>
 </div>
 
-
-
 </body>
-
-
-
-
 
 </html>
