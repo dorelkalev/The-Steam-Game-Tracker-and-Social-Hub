@@ -15,9 +15,9 @@
 
     <style>
         body {
+            background-image: url('https://i.ibb.co/35wPJ1gw/cropped-Unknown.png');
+            background-size: cover;
             font-family: 'Krona One', sans-serif;
-            background-image: url('Insert the image link here!');
-            background-size: contain;
             color: #E4E4E4;
             margin: 0;
             padding: 0;
@@ -25,12 +25,9 @@
             animation: fadeIn 2s forwards;
         }
         header {
-            background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f88efcbd-dd27-4315-802c-431f3f8e4c1c/dbbq7gi-913302c0-ded6-430b-85c4-d81dec356ca2.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y4OGVmY2JkLWRkMjctNDMxNS04MDJjLTQzMWYzZjhlNGMxY1wvZGJicTdnaS05MTMzMDJjMC1kZWQ2LTQzMGItODVjNC1kODFkZWMzNTZjYTIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.M6LDvNPXpVRmxrBXpwhr6kDbYfs_Zg1sN0DJEd6zKU8');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            padding: 150px;
+            padding: 50px;
             text-align: center;
+            position: relative;
         }
         header h1 {
             font-family: 'Orbitron', sans-serif;
@@ -39,11 +36,12 @@
             animation: colorChange 3s infinite;
         }
         nav {
-            background-image: url('Insert the image link here!');
-            background-size: cover;
             display: flex;
             justify-content: center;
-            padding: 10px 0;
+            padding: 10px;
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
         }
         nav a {
             color: #E4E4E4;
@@ -55,15 +53,14 @@
             color: #66c0f4;
         }
         .hero {
-            background-image: url('Insert the image link here!');
-            background-size: cover;
-            height: 300px;
+            height: 150px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            color: white;
+            align-items: flex-start;
+            color: darkgrey;
             font-size: 28px;
             text-align: center;
+            padding-top: 20px;
         }
         .hero h2 {
             animation: fadeInOut 3s infinite;
@@ -104,17 +101,16 @@
 <body>
 
 <header>
-    <h1>Steam Game Tracker & Social Hub</h1>
+    <h1>The Steam Game Tracker and Social Hub</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Games</a>
+        <a href="#">Friends</a>
+        <a href="#">Stats</a>
+        <a href="#">Community</a>
+        <a href="#">Profile</a>
+    </nav>
 </header>
-
-<nav>
-    <a href="#">Home</a>
-    <a href="#">Games</a>
-    <a href="#">Friends</a>
-    <a href="#">Stats</a>
-    <a href="#">Community</a>
-    <a href="#">Profile</a>
-</nav>
 
 <div class="hero">
     <h2>Track your games, stats, and connect with your friends!</h2>
