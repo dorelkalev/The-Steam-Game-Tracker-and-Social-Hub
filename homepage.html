@@ -23,6 +23,7 @@
             padding: 0;
             opacity: 0;
             animation: fadeIn 2s forwards;
+            cursor: none;
         }
         header {
             padding: 50px;
@@ -65,6 +66,34 @@
         .hero h2 {
             animation: fadeInOut 3s infinite;
         }
+        .ps-button {
+            position: absolute;
+            font-size: 24px;
+            z-index: 100;
+            animation: fall 3s linear infinite;
+        }
+        .circle {
+            color: white;
+            background-color: red;
+            border-radius: 50%;
+            padding: 10px;
+        }
+        .x {
+            color: white;
+            background-color: blue;
+            padding: 10px;
+        }
+        .square {
+            color: white;
+            background-color: pink;
+            padding: 10px;
+        }
+        .triangle {
+            color: white;
+            background-color: green;
+            padding: 10px;
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+        }
         @keyframes colorChange {
             0% {
                 color: #66c0f4;
@@ -95,6 +124,15 @@
                 opacity: 1;
             }
         }
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 
@@ -115,6 +153,27 @@
 <div class="hero">
     <h2>Track your games, stats, and connect with your friends!</h2>
 </div>
+
+<script>
+    const psButtons = ['circle', 'x', 'square', 'triangle'];
+
+    document.addEventListener('mousemove', function(e) {
+        const button = psButtons[Math.floor(Math.random() * psButtons.length)];
+        const psButtonElement = document.createElement('div');
+        psButtonElement.classList.add('ps-button', button);
+        document.body.appendChild(psButtonElement);
+
+        const mouseX = e.pageX;
+        const mouseY = e.pageY;
+
+        psButtonElement.style.left = `${mouseX - 12}px`;
+        psButtonElement.style.top = `${mouseY - 12}px`;
+
+        setTimeout(() => {
+            psButtonElement.remove();
+        }, 500);
+    });
+</script>
 
 </body>
 
