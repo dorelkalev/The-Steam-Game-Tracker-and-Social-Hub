@@ -23,7 +23,7 @@
             padding: 0;
             opacity: 0;
             animation: fadeIn 2s forwards;
-            cursor: none;
+            cursor: default;
             transition: background-color 0.5s ease;
         }
 
@@ -37,6 +37,7 @@
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 20px;
+            z-index: 1000;
         }
 
         .sidebar a {
@@ -58,14 +59,27 @@
             right: 25px;
             font-size: 36px;
             margin-left: 50px;
+            color: #818181;
         }
 
         .openbtn {
-            font-size: 30px;
+            font-size: 40px;
             cursor: pointer;
             background-color: transparent;
             color: #66c0f4;
             border: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+        }
+
+        .openbtn div {
+            width: 35px;
+            height: 5px;
+            background-color: #66c0f4;
+            margin: 6px 0;
+            transition: 0.4s;
         }
 
         body.dark-mode {
@@ -213,7 +227,11 @@
     <a href="#">Profile</a>
 </div>
 
-<button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
+<button class="openbtn" onclick="openNav()">
+    <div></div>
+    <div></div>
+    <div></div>
+</button>
 
 <header>
     <h1>The Steam Game Tracker and Social Hub</h1>
@@ -226,10 +244,12 @@
 <script>
     function openNav() {
         document.getElementById("mySidebar").style.left = "0";
+        document.body.style.cursor = "none";
     }
 
     function closeNav() {
         document.getElementById("mySidebar").style.left = "-250px";
+        document.body.style.cursor = "default";
     }
 
     const hour = new Date().getHours();
