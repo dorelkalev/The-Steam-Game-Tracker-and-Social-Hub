@@ -1,0 +1,197 @@
+body {
+    background-image: url('https://i.ibb.co/35wPJ1gw/cropped-Unknown.png');
+    background-size: cover;
+    font-family: 'Krona One', sans-serif;
+    color: #E4E4E4;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    cursor: default;
+    transition: background-color 0.5s ease;
+}
+
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    background-color: #2a2a2a;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 20px;
+    z-index: 1000;
+}
+
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #66c0f4;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: #818181;
+}
+
+.openbtn {
+    font-size: 40px;
+    cursor: pointer;
+    background-color: transparent;
+    color: #66c0f4;
+    border: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+}
+
+.openbtn div {
+    width: 35px;
+    height: 5px;
+    background-color: #66c0f4;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #E4E4E4;
+}
+
+.hero {
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: darkgrey;
+    font-size: 28px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+header {
+    padding: 50px;
+    text-align: center;
+    position: relative;
+}
+
+header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 72px;
+    color: #66c0f4;
+    animation: colorChange 3s infinite;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
+nav a {
+    color: #E4E4E4;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #66c0f4;
+}
+
+.ps-button {
+    position: absolute;
+    font-size: 24px;
+    z-index: 100;
+    animation: fall 3s linear infinite;
+}
+
+.circle {
+    color: white;
+    background-color: red;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.x {
+    color: white;
+    background-color: blue;
+    padding: 10px;
+}
+
+.square {
+    color: white;
+    background-color: pink;
+    padding: 10px;
+}
+
+.triangle {
+    color: white;
+    background-color: green;
+    padding: 10px;
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+@keyframes colorChange {
+    0% {
+        color: #66c0f4;
+    }
+    33% {
+        color: #000000;
+    }
+    66% {
+        color: #808080;
+    }
+    100% {
+        color: #66c0f4;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.smooth-transition {
+    transition: all 0.5s ease;
+}
