@@ -11,6 +11,9 @@ body {
     transition: background-color 0.5s ease;
 }
 
+.fade-effect {
+    animation: fadeInOut 3s infinite;
+}
 .sidebar {
     height: 100%;
     width: 250px;
