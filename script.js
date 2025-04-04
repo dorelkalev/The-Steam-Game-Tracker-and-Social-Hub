@@ -8,8 +8,6 @@ function closeNav() {
     document.body.style.cursor = "default";
 }
 
-const psButtons = ['circle', 'x', 'square', 'triangle'];
-
 document.addEventListener('mousemove', function (e) {
     const button = psButtons[Math.floor(Math.random() * psButtons.length)];
     const psButtonElement = document.createElement('div');
@@ -19,8 +17,11 @@ document.addEventListener('mousemove', function (e) {
     const mouseX = e.pageX;
     const mouseY = e.pageY;
 
-    psButtonElement.style.left = `${mouseX - 12}px`;
-    psButtonElement.style.top = `${mouseY - 12}px`;
+    const elementWidth = psButtonElement.offsetWidth;
+    const elementHeight = psButtonElement.offsetHeight;
+
+    psButtonElement.style.left = `${mouseX - elementWidth / 2}px`;
+    psButtonElement.style.top = `${mouseY - elementHeight / 2}px`;
 
     setTimeout(() => {
         psButtonElement.remove();
