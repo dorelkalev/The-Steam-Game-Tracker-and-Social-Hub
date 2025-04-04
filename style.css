@@ -130,13 +130,31 @@ nav a:hover {
 
 @keyframes backgroundChange {
     33% {
-        color: #000000;
+        background-color: #000000;
     }
     100% {
-        color: #e7f0f6;
+        background-color: #5b5c60;
     }
 }
 
-.smooth-transition {
-    transition: all 0.5s ease;
+@keyframes buttonChange {
+    33% {
+        background-color: #000000;
+    }
+    100% {
+        background-color: #66c0f4;
+    }
 }
+
+.navibar-element {
+    animation:
+            colorChange 3s ease-in-out infinite,
+            backgroundChange 3s ease-in-out infinite;
+}
+
+div {
+    animation:
+            colorChange 3s ease-in-out infinite,
+            buttonChange 3s ease-in-out infinite;
+}
+
