@@ -60,7 +60,6 @@ body {
     top: 20px;
     left: 20px;
     z-index: 1001;
-    animation: colorChange 3s infinite;
 }
 
 .openbtn div {
@@ -69,6 +68,7 @@ body {
     background-color: #66c0f4;
     margin: 6px 0;
     transition: 0.4s;
+    animation: buttonChange 3s infinite;
 }
 
 .hero {
@@ -152,9 +152,5 @@ nav a:hover {
             backgroundChange 3s ease-in-out infinite;
 }
 
-div {
-    animation:
-            colorChange 3s ease-in-out infinite,
-            buttonChange 3s ease-in-out infinite;
-}
+
 
