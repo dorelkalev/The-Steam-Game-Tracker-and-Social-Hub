@@ -5,7 +5,7 @@ body {
     color: #E4E4E4;
     margin: 0;
     padding: 0;
-    animation: colorChange 2s forwards;
+    animation: colorChange 3s infinite;
     cursor: default;
 }
 
@@ -83,6 +83,18 @@ body {
     animation: colorChange 3s infinite;
 }
 
+.hero2 {
+    height: 150px;
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    color: darkgrey;
+    font-size: 28px;
+    text-align: left;
+    padding-top: 20px;
+    animation: colorChange 3s infinite;
+}
+
 header {
     padding: 50px;
     text-align: center;
@@ -152,5 +164,33 @@ nav a:hover {
             backgroundChange 3s ease-in-out infinite;
 }
 
+#search {
+    animation: searchBackgroundChange 3s infinite;
+    background-color: #000000;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
 
+#submit {
+    animation: searchBackgroundChange 3s infinite;
+    background-color: #000000;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
 
+@keyframes searchBackgroundChange {
+    33% {
+        background-color: #000000;
+    }
+    100% {
+        background-color: #ffffff;
+    }
+}
+
+.ImgDesign {
+
+    height: 50px;
+    width: 50px;
+}
