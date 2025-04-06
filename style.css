@@ -1,6 +1,9 @@
+
+
 body {
     background-image: url('https://i.ibb.co/35wPJ1gw/cropped-Unknown.png');
     background-size: cover;
+    background-attachment: fixed;
     font-family: 'Krona One', sans-serif;
     color: #66c0f4;
     margin: 0;
@@ -191,4 +194,13 @@ nav a:hover {
     100% {
         background-color: transparent;
     }
+}
+
+.friendButton {
+
+    animation: searchBackgroundChange 3s infinite;
+    background-color: #000000;
+    border: none;
+    outline: none;
+    box-shadow: none;
 }

@@ -30,3 +30,19 @@ document.addEventListener('mousemove', function (e) {
 
 const fadeEffect = document.querySelector('.fade-effect');
 fadeEffect.style.animation = 'fadeInOut 3s infinite';
+
+function showFriendInfo() {
+
+    var gamesPlayed = document.getElementById("gamesPlayed");
+    var totalPlaytime = document.getElementById("totalPlaytime");
+    var currentlyPlaying = document.getElementById("currentlyPlaying");
+
+    if (gamesPlayed.style.display === "none") {
+        gamesPlayed.style.display = "block";
+
+
+
+    }
+
+
+}
