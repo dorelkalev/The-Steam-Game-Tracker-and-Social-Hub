@@ -8,29 +8,19 @@ function closeNav() {
     document.body.style.cursor = "default";
 }
 
-document.addEventListener('mousemove', function (e) {
-    const button = psButtons[Math.floor(Math.random() * psButtons.length)];
-    const psButtonElement = document.createElement('div');
-    psButtonElement.classList.add('ps-button', button);
-    document.body.appendChild(psButtonElement);
-
-    const mouseX = e.pageX;
-    const mouseY = e.pageY;
-
-    const elementWidth = psButtonElement.offsetWidth;
-    const elementHeight = psButtonElement.offsetHeight;
-
-    psButtonElement.style.left = `${mouseX - elementWidth / 2}px`;
-    psButtonElement.style.top = `${mouseY - elementHeight / 2}px`;
-
-    setTimeout(() => {
-        psButtonElement.remove();
-    }, 500);
-});
-
 const fadeEffect = document.querySelector('.fade-effect');
 fadeEffect.style.animation = 'fadeInOut 3s infinite';
 
+function gameSearch() {
+    var gameTitle = document.getElementById("game-title");
+    var gameImage = document.getElementById("game-image");
+    var gamePlaytime = document.getElementById("game-playtime");
+    var gameCompletion = document.getElementById("game-completion");
+    var friendPlayedGame = document.getElementById("friends-playing-game");
+
+   /*if (gameTitle is inside account's Steam games owned list) display game contents. */
+
+}
 function showFriendInfo() {
 
     var gamesPlayed = document.getElementById("gamesPlayed");

@@ -40,18 +40,19 @@
 
 <div class="hero">
     <form action="/search" method="get">
-        <input type="search" id="search" name= "query">
-        <button type="submit" id="submit">Search</button>
+        <input type="search" id="search" name="query">
+        <button type="submit" onclick=gameSearch() id="submit">Search</button>
     </form>
 
 </div>
 
-    <h2 id="game-title">
+    <h2 id="game-title" style="display: none">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <img id="game-image" class="ImgDesign">
+        <img id="game-image" style="display: none" class="ImgDesign">
     </h2>
-    <h2 id="game-playtime">Playtime: </h2>
-    <h2 id="game-completion">Completion: </h2>
+    <h2 id="game-playtime" style="display: none">Playtime: </h2>
+    <h2 id="game-completion" style="display: none">Completion: </h2>
+    <h2 id="friends-playing-game" style="display: none">Friends that play </h2>
 
 
 
