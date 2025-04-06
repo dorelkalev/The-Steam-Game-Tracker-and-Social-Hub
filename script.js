@@ -39,10 +39,13 @@ function showFriendInfo() {
 
     if (gamesPlayed.style.display === "none") {
         gamesPlayed.style.display = "block";
-
-
-
+        totalPlaytime.style.display = "block";
+        currentlyPlaying.style.display = "block";
     }
 
-
+    else {
+        gamesPlayed.style.display = "none";
+        totalPlaytime.style.display = "none";
+        currentlyPlaying.style.display = "none";
+    }
 }
