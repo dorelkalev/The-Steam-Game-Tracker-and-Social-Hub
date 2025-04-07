@@ -1,0 +1,203 @@
+body {
+    background-image: url('https://i.ibb.co/35wPJ1gw/cropped-Unknown.png');
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Krona One', sans-serif;
+    color: #66c0f4;
+    margin: 0;
+    padding: 0;
+    animation: colorChange 3s infinite;
+    cursor: default;
+}
+
+.color-change {
+    animation: colorChange 3s infinite;
+}
+
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    background-color: #2a2a2a;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 20px;
+    z-index: 1000;
+    animation: backgroundChange 3s infinite;
+}
+
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #66c0f4;
+    display: block;
+    transition: 0.3s;
+    animation: colorChange 3s infinite;
+}
+
+.sidebar a:hover {
+    color: #66c0f4;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: #66c0f4;
+}
+
+.openbtn {
+    font-size: 40px;
+    cursor: pointer;
+    background-color: transparent;
+    color: #66c0f4;
+    border: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+}
+
+.openbtn div {
+    width: 35px;
+    height: 5px;
+    background-color: #66c0f4;
+    margin: 6px 0;
+    transition: 0.4s;
+    animation: buttonChange 3s infinite;
+}
+
+.hero {
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: #66c0f4;
+    font-size: 28px;
+    text-align: center;
+    padding-top: 20px;
+    animation: colorChange 3s infinite;
+}
+
+header {
+    padding: 50px;
+    text-align: center;
+    position: relative;
+}
+
+header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 72px;
+    color: #66c0f4;
+    animation: colorChange 3s infinite;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    animation: colorChange 3s infinite;
+}
+
+nav a {
+    color: #E4E4E4;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+    animation: colorChange 3s infinite;
+}
+
+nav a:hover {
+    color: #66c0f4;
+}
+
+@keyframes colorChange {
+    33% {
+        color: #000000;
+    }
+    100% {
+        color: #66c0f4;
+    }
+}
+
+@keyframes backgroundChange {
+    33% {
+        background-color: #000000;
+    }
+    100% {
+        background-color: #5b5c60;
+    }
+}
+
+@keyframes buttonChange {
+    33% {
+        background-color: #000000;
+    }
+    100% {
+        background-color: #66c0f4;
+    }
+}
+
+.navibar-element {
+    animation:
+            colorChange 3s ease-in-out infinite,
+            backgroundChange 3s ease-in-out infinite;
+}
+
+#search {
+    animation: searchBackgroundChange 3s infinite;
+    background-color: #000000;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+#submit {
+    animation: searchBackgroundChange 3s infinite;
+    background-color: #000000;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+@keyframes searchBackgroundChange {
+    33% {
+        background-color: #000000;
+    }
+    100% {
+        background-color: #ffffff;
+    }
+}
+
+.ImgDesign {
+
+    height: 200px;
+    width: 200px;
+    animation: imageChange 3s infinite;
+}
+
+@keyframes imageChange {
+    33% {
+        filter: brightness(0);
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+.friendButton {
+    animation: searchBackgroundChange 3s infinite;
+    background-color: #000000;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}

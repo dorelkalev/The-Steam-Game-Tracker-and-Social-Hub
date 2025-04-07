@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+    <script src="{{ url_for('static', path='script.js') }}" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Krona+One&display=swap" rel="stylesheet">
+
+    <title>The Steam Game Tracker and Social Hub</title>
+</head>
+
+<body>
+
+<div id="mySidebar" class="sidebar">
+    <br><br>
+    <a href="javascript:void(0)" class="closebtn color-change" onclick="closeNav()">&times;</a>
+    <a href="#">Home</a>
+    <a href="#">Games</a>
+    <a href="#">Friends</a>
+    <a href="#">Community</a>
+    <a href="#">Profile</a>
+</div>
+
+<button class="openbtn" onclick="openNav()">
+    <div></div>
+    <div></div>
+    <div></div>
+</button>
+
+<header>
+    <h1>The Steam Game Tracker and Social Hub</h1>
+</header>
+
+<div class="hero">
+    <form action="/search" method="get">
+        <input type="search" id="search" name="query">
+        <button type="submit" onclick=gameSearch() id="submit">Search</button>
+    </form>
+
+</div>
+
+    <h2 id="game-title" style="display: none">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img id="game-image" style="display: none" class="ImgDesign">
+    </h2>
+    <h2 id="game-playtime" style="display: none">Playtime: </h2>
+    <h2 id="game-completion" style="display: none">Completion: </h2>
+    <h2 id="friends-playing-game" style="display: none">Friends that play </h2>
+
+
+
+
+</body>
+
+</html>
