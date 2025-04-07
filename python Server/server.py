@@ -16,16 +16,16 @@ async def homepage(request:Request):
 #GAMES
 @server.get("/games", response_class=HTMLResponse)
 async def homepage(request:Request):
-    return templates.TemplateResponse("homepage.html", {"request":request})
+    return templates.TemplateResponse("games.html", {"request":request})
 #FRIENDS
 @server.get("/friends", response_class=HTMLResponse)
 async def homepage(request:Request):
-    return templates.TemplateResponse("homepage.html", {"request":request})
+    return templates.TemplateResponse("friends.html", {"request":request})
 #COMMUNITY
 @server.get("/community", response_class=HTMLResponse)
 async def homepage(request:Request):
-    return templates.TemplateResponse("homepage.html", {"request":request})
+    return templates.TemplateResponse("community.html", {"request":request})
 #PROFILE
 @server.get("/profile", response_class=HTMLResponse)
 async def homepage(request:Request):
-    return templates.TemplateResponse("homepage.html", {"request":request})
+    return templates.TemplateResponse("profile.html", {"request":request})
