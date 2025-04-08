@@ -1,30 +1,66 @@
-//Integrate the API here and instantiate variables based on data from the API. For example:
-
-//Integration:
-const gameSearch = async() => {
-
-const url = 'https://Whatever the Steam game list JSON is';
-const options = {method: 'GET'};
-
-const response = await fetch(url, options);
-const result = await response.text();
-const gameObj = JSON.parse(result);
-
 //Get the HTML elements by ID to use for Javascript logic:
-const gameTitle = document.getElementById("game-title");
-const gameImage = document.getElementById("game-image");
-const gamePlaytime = document.getElementById("game-playtime");
-const gameCompletion = document.getElementById("game-completion");
-const friendsPlayingGame = document.getElementById("friends-playing-game");
+const gameContainer = document.getElementById("game-title");
 
-//gameObj variables
-gameTitle.innerHTML = gameObj.game;
-gameImage.src = gameObj.image;
+//Database integration
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'your_username',
+    password: 'your_password',
+    database: 'your_database'
+});
+
+connection.connect((err) => {
+    if (err) {
+    console.error('Error connecting to database:', err);
+    return;
+    }
+    console.log('Connected to database!');
+});
 
 
 
 
 
+function gameSearch() {
+
+const searchTerm = document.getElementById("search").value;
+
+    const sql = `
+        SELECT game_title, game_image, playtime, completion, friends_playing 
+        FROM games
+        WHERE game_title LIKE ?;
+    `;
+
+    connection.query(sql, [`%${searchTerm}%`], (err, results) => {
+        if (err) {
+            console.error('Error executing query:', err);
+            return;
+        }
+
+        console.log('Query results:', results);
+
+        gameContainer.innerHTML = "";
+
+        if (results.length > 0) {
+            results.forEach(game => {
+                const gameElement = document.createElement('div');
+                gameElement.classList.add('game-result');
+
+                gameElement.innerHTML = '
+                    <h2>${game.game_title} </h2>
+                    <img src="${game.game_image}" alt="${game.game_title}" class="ImgDesign" style="margin-left: 20px;">
+                    <p>Playtime: ${game.playtime}</p>
+                    <p>Completion: ${game.completion}</p>
+                    <p>Friends Playing: ${game.friends_playing}</p>
+                ';
+                gameContainer.appendChild(gameElement);
+            });
+        } 
+        else {
+            gameContainer.innerHTML = "<p>No games found!</p>";
+        }
+    });
 }
 
 
@@ -45,39 +81,3 @@ function closeNav() {
 
 const fadeEffect = document.querySelector('.fade-effect');
 fadeEffect.style.animation = 'fadeInOut 3s infinite';
-
-function gameSearch() {
-    var gameTitle = document.getElementById("game-title");
-    var gameImage = document.getElementById("game-image");
-    var gamePlaytime = document.getElementById("game-playtime");
-    var gameCompletion = document.getElementById("game-completion");
-    var friendPlayedGame = document.getElementById("friends-playing-game");
-
-   /*if (gameTitle is inside account's Steam games owned list) display game contents. */
-
-}
-function showFriendInfo() {
-
-    var gamesPlayed = document.getElementById("gamesPlayed");
-    var totalPlaytime = document.getElementById("totalPlaytime");
-    var currentlyPlaying = document.getElementById("currentlyPlaying");
-
-    if (gamesPlayed.style.display === "none") {
-        gamesPlayed.style.display = "block";
-        totalPlaytime.style.display = "block";
-        currentlyPlaying.style.display = "block";
-    }
-
-    else {
-        gamesPlayed.style.display = "none";
-        totalPlaytime.style.display = "none";
-        currentlyPlaying.style.display = "none";
-    }
-}
-
-function communitySearch() {
-
-
-
-
-}
