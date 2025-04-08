@@ -161,6 +161,14 @@ nav a:hover {
     box-shadow: none;
 }
 
+#search2 {
+    animation: searchBackgroundChange 3s infinite;
+    background-color: #000000;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
 #submit {
     animation: searchBackgroundChange 3s infinite;
     background-color: #000000;

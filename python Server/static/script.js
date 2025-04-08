@@ -1,3 +1,38 @@
+//Integrate the API here and instantiate variables based on data from the API. For example:
+
+//Integration:
+const gameSearch = async() => {
+
+const url = 'https://Whatever the Steam game list JSON is';
+const options = {method: 'GET'};
+
+const response = await fetch(url, options);
+const result = await response.text();
+const gameObj = JSON.parse(result);
+
+//Get the HTML elements by ID to use for Javascript logic:
+const gameTitle = document.getElementById("game-title");
+const gameImage = document.getElementById("game-image");
+const gamePlaytime = document.getElementById("game-playtime");
+const gameCompletion = document.getElementById("game-completion");
+const friendsPlayingGame = document.getElementById("friends-playing-game");
+
+//gameObj variables
+gameTitle.innerHTML = gameObj.game;
+gameImage.src = gameObj.image;
+
+
+
+
+
+}
+
+
+
+
+
+
+
 function openNav() {
     document.getElementById("mySidebar").style.left = "0";
     document.body.style.cursor = "none";
@@ -38,4 +73,11 @@ function showFriendInfo() {
         totalPlaytime.style.display = "none";
         currentlyPlaying.style.display = "none";
     }
+}
+
+function communitySearch() {
+
+
+
+
 }
