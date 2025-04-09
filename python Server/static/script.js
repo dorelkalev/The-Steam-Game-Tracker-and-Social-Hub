@@ -2,7 +2,7 @@
 const gameContainer = document.getElementById("game-title");
 
 //Database integration
-const mysql = require('mysql');
+const mysql = require('steam');
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'your_username',
@@ -47,13 +47,13 @@ const searchTerm = document.getElementById("search").value;
                 const gameElement = document.createElement('div');
                 gameElement.classList.add('game-result');
 
-                gameElement.innerHTML = '
+                gameElement.innerHTML = `
                     <h2>${game.game_title} </h2>
                     <img src="${game.game_image}" alt="${game.game_title}" class="ImgDesign" style="display: inline-block; margin-left: 20px;">
                     <p>Playtime: ${game.playtime}</p>
                     <p>Completion: ${game.completion}</p>
                     <p>Friends Playing: ${game.friends_playing}</p>
-                ';
+                `;
                 gameContainer.appendChild(gameElement);
             });
         } 
@@ -62,7 +62,6 @@ const searchTerm = document.getElementById("search").value;
         }
     });
 }
-
 
 
 
