@@ -49,7 +49,7 @@ const searchTerm = document.getElementById("search").value;
 
                 gameElement.innerHTML = '
                     <h2>${game.game_title} </h2>
-                    <img src="${game.game_image}" alt="${game.game_title}" class="ImgDesign" style="margin-left: 20px;">
+                    <img src="${game.game_image}" alt="${game.game_title}" class="ImgDesign" style="display: inline-block; margin-left: 20px;">
                     <p>Playtime: ${game.playtime}</p>
                     <p>Completion: ${game.completion}</p>
                     <p>Friends Playing: ${game.friends_playing}</p>
