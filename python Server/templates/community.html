@@ -42,19 +42,13 @@
 </header>
 
 <h2 id=>
-<form action="/submit" method="get">
-    <input type="search" id="search2" name="query">
-    <button type="submit" onclick=communitySearch() id="submit">Post</button>
-</form>
+    <form onsubmit="return communityButton(event)" method="get">
+        <input type="search" id="search2" name="query" placeholder="Write your game review...">
+        <button type="submit" id="submit">Post</button>
+    </form>
 </h2>
 
-<h2 id="post-box" class="post-box">
-
-
-    
-</h2>
-
-<br><br>
+<h2 id="post-box" class="post-box"></h2>
 
 
 
