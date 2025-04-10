@@ -1,7 +1,6 @@
 //Get the HTML elements by ID to use for Javascript logic:
 const gameContainer = document.getElementById("game");
 const friendContainer = document.getElementById("friend");
-const communityContainer = document.getElementById("community");
 
 //Database integration
 const mysql = require('mysql');
@@ -113,7 +112,7 @@ function communityButton(event) {
 
     const reviewText = document.getElementById('search2').value;
     const postBox = document.getElementById('post-box');
-
+    
     const username = 'PlayerOne'; // Replace with actual logged-in username
     const gameTitle = 'Current Game Title'; // Replace with actual selected game title
 
@@ -155,6 +154,40 @@ function communityButton(event) {
     return false;
 }
 
+function login(event) {
+    event.preventDefault();
+    
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+
+    if (!user || !pass) {
+        alert("Please enter both username and password.");
+        return false;
+    }
+
+    fetch('/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username: user, password: pass })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            alert("Login successful!");
+            window.location.href = "/profile";
+        } else {
+            alert("Invalid credentials.");
+        }
+    })
+    .catch(err => {
+        console.error("Login error:", err);
+        alert("Something went wrong. Try again later.");
+    });
+
+    return false;
+}
 
 
 
