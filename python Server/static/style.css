@@ -6,7 +6,7 @@ body {
     color: #66c0f4;
     margin: 0;
     padding: 0;
-    animation: colorChange 3s infinite, imageChange2 3s infinite;
+    animation: colorChange 3s infinite;
     cursor: default;
 }
 
@@ -202,13 +202,12 @@ nav a:hover {
     }
 }
 
-@keyframes imageChange2 {
-    33% {
-        background-color: black;
+@keyframes imageFade {
+    0% {
+        filter: brightness(0);
     }
-
     100% {
-        background-image: url('https://i.ibb.co/35wPJ1gw/cropped-Unknown.png');
+        filter: brightness(1);
     }
 }
 
