@@ -62,7 +62,7 @@ const searchTerm = document.getElementById("search").value;
 }
 
 function showFriendInfo() {
-    friendContainer.innerHTML = ''; // Clear existing content
+    friendContainer.innerHTML = '';
 
     const sql = `
         SELECT id, username, profile_picture, status, favorite_game, total_playtime
@@ -109,12 +109,11 @@ function revealFriendDetails() {
 }
 
 function communityButton(event) {
-    event.preventDefault(); // Prevent form from reloading page
+    event.preventDefault();
 
     const reviewText = document.getElementById('search2').value;
     const postBox = document.getElementById('post-box');
 
-    // Mock values for now (you can pull from session/user info)
     const username = 'PlayerOne'; // Replace with actual logged-in username
     const gameTitle = 'Current Game Title'; // Replace with actual selected game title
 
@@ -136,7 +135,6 @@ function communityButton(event) {
 
         console.log('Post inserted with ID:', result.insertId);
 
-        // Update the UI with the new post
         const newPost = document.createElement('div');
         newPost.classList.add('community-post');
         newPost.style.border = '1px solid #aaa';
