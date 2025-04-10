@@ -219,7 +219,8 @@ nav a:hover {
     box-shadow: none;
 }
 
-.white-background {
-
-    
+.post-box {
+    background-color: white;
+    width: 40%;
+    height: 40%;    
 }
