@@ -224,3 +224,10 @@ nav a:hover {
     width: 40%;
     height: 40%;    
 }
+
+#loginPart {
+    margin-left: 50px;
+    background-color: blue;
+
+
+}
