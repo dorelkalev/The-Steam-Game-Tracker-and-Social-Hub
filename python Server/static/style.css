@@ -218,6 +218,7 @@ nav a:hover {
     border: none;
     outline: none;
     box-shadow: none;
+    margin-left: 10%;
 }
 
 .post-box {
