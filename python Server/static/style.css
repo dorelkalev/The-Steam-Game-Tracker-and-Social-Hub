@@ -167,6 +167,7 @@ nav a:hover {
     border: none;
     outline: none;
     box-shadow: none;
+    margin-left: 50px;
 }
 
 #submit {
@@ -222,11 +223,36 @@ nav a:hover {
 .post-box {
     background-color: white;
     width: 40%;
-    height: 40%;    
+    height: 40%;
 }
 
 .username {
-    margin-left: 50px !important;
-    background-color: blue !important;
+    margin-left: 50px;
+    background-color: blue;
+    animation: userPasswordBackgroundChange 3s infinite;
+}
+
+.password {
+    display: block;
+    margin-left: 50px;
+    background-color: blue;
+    animation: userPasswordBackgroundChange 3s infinite;
+}
+
+.loginButton {
     animation: searchBackgroundChange 3s infinite;
+    margin-left: 20%;
+    background-color: #000000;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+@keyframes userPasswordBackgroundChange {
+    33% {
+        background-color: #000000;
+    }
+    100% {
+        background-color: blue;
+    }
 }
