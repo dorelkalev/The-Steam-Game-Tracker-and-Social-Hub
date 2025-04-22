@@ -264,7 +264,7 @@ nav a:hover {
     background-color: #ff5500;
     border-radius: 50%;
     pointer-events: none;
-    box-shadow: 0 0 15px 4px rgba(255, 85, 0, 0.6);
+    box-shadow: 0 0 20px 5px rgba(255, 85, 0, 0.6); /* Stronger glow */
     left: 0;
     top: 0;
     transition: opacity 0.3s;
