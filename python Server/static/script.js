@@ -151,12 +151,10 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
 function openNav() {
     document.getElementById("mySidebar").style.left = "0";
-    document.body.style.cursor = "none";
 }
 
 function closeNav() {
     document.getElementById("mySidebar").style.left = "-250px";
-    document.body.style.cursor = "default";
 }
 
 const fadeEffect = document.querySelector('.fade-effect');
