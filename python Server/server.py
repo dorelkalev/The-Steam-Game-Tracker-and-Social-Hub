@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+
 server = FastAPI()
 
 server.mount("/static", StaticFiles(directory="static"), name="static")
@@ -28,3 +29,9 @@ async def homepage(request:Request):
 @server.get("/profile", response_class=HTMLResponse)
 async def homepage(request:Request):
     return templates.TemplateResponse("profile.html", {"request":request})
+
+# TODO: SETUP ROUTES for AUTH
+#       Test endpoints
+#       Protect Routes
+#       Validation, email verification, password reset
+#       Customize user model
