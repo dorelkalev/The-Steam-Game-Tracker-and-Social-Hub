@@ -1,7 +1,9 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Depends
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from authentication import fastapi_users,auth_backend,UserRead,UserCreate,UserUpdate
+
 
 server = FastAPI()
 
@@ -30,8 +32,31 @@ async def homepage(request:Request):
 async def homepage(request:Request):
     return templates.TemplateResponse("profile.html", {"request":request})
 
-# TODO: SETUP ROUTES for AUTH
-#       Test endpoints
+server.include_router(
+    fastapi_users.get_auth_router(auth_backend),
+    prefix="/auth",
+    tags=["auth"]
+)
+server.include_router(
+    fastapi_users.get_register_router(UserRead,UserCreate),
+    prefix="/auth",
+    tags=["auth"],
+)
+server.include_router(
+    fastapi_users.get_users_router(UserRead,UserUpdate),
+    prefix="/users",
+    tags=["users"],
+)
+@server.get("/protected")
+async def protected_route(user=Depends(fastapi_users.current_user(active=True))):
+    return {"message": f"Hello {user.email}, you are logged in!"}
+
+
+
+
+#       SETUP ROUTES for AUTH
+# TODO:
+#       Test endpoints !!!
 #       Protect Routes
 #       Validation, email verification, password reset
 #       Customize user model

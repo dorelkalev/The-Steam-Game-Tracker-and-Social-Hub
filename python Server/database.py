@@ -11,6 +11,7 @@ class Base(DeclarativeBase): #  base functionality for models like user. Allows 
     pass
 
 
+
 #  called asynchronously to build tables along with their models
 async def create_db_and_tables():
     async with engine.begin() as conn:
