@@ -3,13 +3,21 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from authentication import fastapi_users,auth_backend,UserRead,UserCreate,UserUpdate
+from contextlib import asynccontextmanager
+from database import create_db_and_tables
 
 
-server = FastAPI()
 
+#database setup
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await create_db_and_tables()
+    yield
+
+
+server = FastAPI(lifespan=lifespan)
 server.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
-
 
 #HOMEPAGE
 @server.get("/", response_class=HTMLResponse)
@@ -47,6 +55,8 @@ server.include_router(
     prefix="/users",
     tags=["users"],
 )
+
+#protected route test
 @server.get("/protected")
 async def protected_route(user=Depends(fastapi_users.current_user(active=True))):
     return {"message": f"Hello {user.email}, you are logged in!"}
@@ -55,8 +65,8 @@ async def protected_route(user=Depends(fastapi_users.current_user(active=True)))
 
 
 #       SETUP ROUTES for AUTH
+#       Test endpoints
 # TODO:
-#       Test endpoints !!!
-#       Protect Routes
-#       Validation, email verification, password reset
-#       Customize user model
+#       Protect Routes (Make profile pages?)
+#       Email verification (maybe?), password reset
+#       Customize user model (add steamID field (profile settings?))
