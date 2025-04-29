@@ -1,3 +1,11 @@
+#       SETUP ROUTES for AUTH
+#       Test endpoints
+# TODO:
+#       Protect Routes (Make profile pages?)
+#       Email verification (maybe?), password reset
+#       Customize user model (add steamID field (profile settings?))
+
+
 from fastapi import FastAPI, Request, Depends
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
@@ -64,9 +72,3 @@ async def protected_route(user=Depends(fastapi_users.current_user(active=True)))
 
 
 
-#       SETUP ROUTES for AUTH
-#       Test endpoints
-# TODO:
-#       Protect Routes (Make profile pages?)
-#       Email verification (maybe?), password reset
-#       Customize user model (add steamID field (profile settings?))

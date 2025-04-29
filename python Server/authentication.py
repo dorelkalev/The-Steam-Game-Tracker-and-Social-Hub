@@ -9,6 +9,7 @@ from fastapi_users_db_sqlalchemy.access_token import SQLAlchemyAccessTokenDataba
 from sqlalchemy.ext.asyncio import AsyncSession
 from typing import AsyncGenerator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from typing import Optional
 
 
 from database import get_async_session
@@ -23,9 +24,6 @@ settings = Environment()
 
 #transport setup
 cookie_transport = CookieTransport(cookie_name="auth",cookie_max_age=3600)
-
-
-
 
 
 
@@ -56,10 +54,14 @@ auth_backend = AuthenticationBackend(
 
 fastapi_users = FastAPIUsers[User,uuid.UUID](get_user_manager,[auth_backend])
 
+
 class UserRead(schemas.BaseUser[uuid.UUID]):
-    pass
+    steam_id: Optional[str]
+    userName: str
 class UserCreate(schemas.BaseUserCreate):
-    pass
+    userName: str
+    steam_id: Optional[str]
 class UserUpdate(schemas.BaseUserUpdate):
-    pass
+    userName: str
+    steam_id: Optional[str]
 
