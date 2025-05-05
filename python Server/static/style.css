@@ -187,9 +187,6 @@ nav a:hover {
 }
 
 .ImgDesign {
-
-    height: 200px;
-    width: 200px;
     animation: imageChange 3s infinite;
 }
 
@@ -212,6 +209,7 @@ nav a:hover {
 }
 
 .friendButton {
+    display: inline-block;
     animation: searchBackgroundChange 3s infinite;
     background-color: #000000;
     border: none;
@@ -224,6 +222,8 @@ nav a:hover {
     background-color: white;
     width: 40%;
     height: 40%;
+    margin-left: 30%;
+    animation: searchBackgroundChange 3s infinite;
 }
 
 .username {
