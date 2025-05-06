@@ -47,6 +47,15 @@ async def homepage(request:Request):
 @server.get("/profile", response_class=HTMLResponse)
 async def homepage(request:Request):
     return templates.TemplateResponse("profile.html", {"request":request})
+#STATISTICS
+@server.get("/statistics", response_class=HTMLResponse)
+async def homepage(request:Request):
+    return templates.TemplateResponse("statistics.html", {"request":request})
+
+@server.get("/dashboard", response_class=HTMLResponse)
+async def homepage(request:Request):
+    return templates.TemplateResponse("statistics.html", {"request":request})
+
 
 server.include_router(
     fastapi_users.get_auth_router(auth_backend),
@@ -63,6 +72,7 @@ server.include_router(
     prefix="/users",
     tags=["users"],
 )
+
 
 #protected route test
 @server.get("/protected")

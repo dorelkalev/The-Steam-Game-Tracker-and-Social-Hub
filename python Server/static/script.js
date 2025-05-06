@@ -1,6 +1,7 @@
 const gameContainer = document.getElementById("game");
 const friendContainer = document.getElementById("friend");
 
+// Game Search
 async function gameSearch() {
     const searchTerm = document.getElementById("search").value;
 
@@ -27,8 +28,7 @@ async function gameSearch() {
                 `;
                 gameContainer.appendChild(gameElement);
             });
-        }
-        else {
+        } else {
             gameContainer.innerHTML = "<p>No games found!</p>";
         }
     } catch (error) {
@@ -36,6 +36,7 @@ async function gameSearch() {
     }
 }
 
+// Friend Info
 async function showFriendInfo() {
     try {
         const response = await fetch('/api/friends', {
@@ -79,6 +80,7 @@ function revealFriendDetails() {
     });
 }
 
+// Community Post
 async function communityButton(event) {
     event.preventDefault();
     const reviewText = document.getElementById('search2').value;
@@ -113,42 +115,7 @@ async function communityButton(event) {
     }
 }
 
-document.getElementById('loginForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = {
-        username: formData.get('username'),
-        password: formData.get('password')
-    };
-
-    try {
-        const response = await fetch('/token', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: new URLSearchParams({
-                'username': data.username,
-                'password': data.password,
-                'grant_type': 'password'
-            })
-        });
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.detail || 'Login failed');
-        }
-
-        const { access_token } = await response.json();
-        localStorage.setItem('authToken', access_token);
-        localStorage.setItem('user', JSON.stringify({ username: data.username }));
-        window.location.href = '/';
-    } catch (error) {
-        alert(error.message);
-        document.getElementById('password').value = '';
-    }
-});
-
+// Sidebar Navigation
 function openNav() {
     document.getElementById("mySidebar").style.left = "0";
 }
@@ -157,5 +124,27 @@ function closeNav() {
     document.getElementById("mySidebar").style.left = "-250px";
 }
 
+// Redirect to Dashboard after Register
+function redirectToDashboard(event) {
+    event.preventDefault();
+    window.location.href = "/dashboard";
+}
+
+// Optional fade effect
 const fadeEffect = document.querySelector('.fade-effect');
-fadeEffect.style.animation = 'fadeInOut 3s infinite';
+if (fadeEffect) {
+    fadeEffect.style.animation = 'fadeInOut 3s infinite';
+}
+
+// Save user info to localStorage for dashboard use
+function saveUserInfo({ username, email = "", first_name = "", last_name = "" }) {
+    const today = new Date().toISOString().split("T")[0];
+    localStorage.setItem("user", JSON.stringify({
+        username,
+        email,
+        first_name,
+        last_name,
+        registered_at: today
+    }));
+}
+

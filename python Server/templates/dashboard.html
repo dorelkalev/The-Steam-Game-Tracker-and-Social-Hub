@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Krona+One&display=swap" rel="stylesheet">
+  <style>
+    .dashboard-box {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: rgba(0, 0, 0, 0.75);
+      color: #66c0f4;
+      border-radius: 10px;
+      font-family: 'Krona One', sans-serif;
+      text-align: left;
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    }
+
+    .dashboard-box h2 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    .dashboard-box .info {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    .dashboard-box .info strong {
+      display: inline-block;
+      width: 160px;
+    }
+
+    .dashboard-box ul {
+      margin-top: 20px;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Welcome to Your Dashboard</h1>
+  </header>
+
+  <div class="dashboard-box">
+    <h2>Account Information</h2>
+
+    <div class="info">
+      <p><strong>First Name:</strong> <span id="firstName">...</span></p>
+      <p><strong>Last Name:</strong> <span id="lastName">...</span></p>
+      <p><strong>Username:</strong> <span id="username">...</span></p>
+      <p><strong>Email:</strong> <span id="email">...</span></p>
+      <p><strong>Registration Date:</strong> <span id="registeredAt">...</span></p>
+    </div>
+
+    <h2>Getting Started</h2>
+    <ul>
+      <li>🎮 Go to the <strong>Games</strong> section to track your library.</li>
+      <li>👥 Visit <strong>Friends</strong> to connect with others.</li>
+      <li>🌐 Post updates in <strong>Community</strong>.</li>
+      <li>📝 Update your info in the <strong>Profile</strong> tab.</li>
+    </ul>
+  </div>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+
+    document.getElementById("firstName").textContent = user.first_name || "N/A";
+    document.getElementById("lastName").textContent = user.last_name || "N/A";
+    document.getElementById("username").textContent = user.username || "N/A";
+    document.getElementById("email").textContent = user.email || "N/A";
+    document.getElementById("registeredAt").textContent = user.registered_at || "N/A";
+  </script>
+
+</body>
+</html>
