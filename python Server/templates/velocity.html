@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
     <script src="{{ url_for('static', path='script.js') }}" defer></script>
@@ -17,7 +18,6 @@
     <!-- DataTables JS -->
     <script src="https://cdn.datatables.net/2.3.0/js/dataTables.js"></script>
 
-    <script src="{{ url_for('static', path='table.js') }}" defer></script>
 
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -27,8 +27,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Krona+One&display=swap" rel="stylesheet">
 
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', path='table.js') }}" defer></script>
 
     <title>The Steam Game Tracker and Social Hub</title>
 </head>
@@ -57,24 +56,12 @@
 </header>
 
 <div class="hero color-change" style="margin-left: -1200px;">
-    <h2 class="color-change">MaximG_007's Game Stats</h2>
+    <h2 class="color-change">MaximG_007's Playtime Velocity</h2>
 </div>
 
-<canvas id="playtimeChart" width="800" height="100"></canvas>
+<canvas id="playtimeVelocityChart" width="800" height="200"></canvas>
 
-<table id="gamesTable" class="display">
-    <thead>
-        <tr>
-            <th>App ID</th>
-            <th>Playtime (hrs)</th>
-            <th>Last Played</th>
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
-
-<canvas id="playtimeVelocityChart" width="800" height="400"></canvas>
-
+<canvas id="playtimeChart" width="800" height="400" ></canvas>
 
 
 

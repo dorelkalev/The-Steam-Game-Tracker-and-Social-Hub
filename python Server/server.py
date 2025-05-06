@@ -56,6 +56,10 @@ async def homepage(request:Request):
 async def homepage(request:Request):
     return templates.TemplateResponse("statistics.html", {"request":request})
 
+@server.get("/velocity", response_class=HTMLResponse)
+async def homepage(request:Request):
+    return templates.TemplateResponse("velocity.html", {"request":request})
+
 
 server.include_router(
     fastapi_users.get_auth_router(auth_backend),
