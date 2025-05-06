@@ -189,3 +189,13 @@ nav a:hover {
 }
 
 
+#gamesTable {
+    background-color: white;
+    color: black;
+}
+
+#gamesTable td, #gamesTable th {
+    background-color: #c1c1c1 !important;
+    color: black;
+}
+

@@ -9,8 +9,18 @@
     <script src="{{ url_for('static', path='script.js') }}" defer></script>
     <script src="{{ url_for('static', path='trail.js') }}" defer></script>
 
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.0/css/dataTables.dataTables.css" />
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/2.3.0/js/dataTables.js"></script>
+
+    <script src="{{ url_for('static', path='table.js') }}" defer></script>
+
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,9 +53,23 @@
     <h1>The Steam Game Tracker and Social Hub</h1>
 </header>
 
-<div class="hero color-change">
-    <h2 class="color-change">Track your games, stats, and connect with your friends!</h2>
+<div class="hero color-change" style="margin-left: -1200px;">
+    <h2 class="color-change">MaximG_007's Game Stats</h2>
 </div>
+
+
+<table id="gamesTable" class="display">
+    <thead>
+        <tr>
+            <th>App ID</th>
+            <th>Playtime (hrs)</th>
+            <th>Last Played</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+
 
 </body>
 
