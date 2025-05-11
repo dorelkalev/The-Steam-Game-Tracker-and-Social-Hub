@@ -121,10 +121,10 @@ nav a:hover {
 
 @keyframes colorChange {
     33% {
-        color: #000000;
+        opacity: 0%;
     }
     100% {
-        color: #66c0f4;
+        opacity: 100%;
     }
 }
 
@@ -271,4 +271,8 @@ nav a:hover {
     left: 0;
     top: 0;
     transition: opacity 0.3s;
+}
+
+.OpacityChange {
+    background-color: rgba(0, 0, 0, 0.6);
 }
