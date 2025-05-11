@@ -6,10 +6,11 @@ body {
     color: #66c0f4;
     margin: 0;
     padding: 0;
+    animation: colorChange 3s infinite;
 }
 
 .color-change {
-    color: #66c0f4;
+    animation: colorChange 3s infinite;
 }
 
 .sidebar {
@@ -23,6 +24,7 @@ body {
     transition: 0.5s;
     padding-top: 20px;
     z-index: 1000;
+    animation: backgroundChange 3s infinite;
 }
 
 .sidebar a {
@@ -32,10 +34,11 @@ body {
     color: #66c0f4;
     display: block;
     transition: 0.3s;
+    animation: colorChange 3s infinite;
 }
 
 .sidebar a:hover {
-    color: #ffffff;
+    color: #66c0f4;
 }
 
 .sidebar .closebtn {
@@ -65,6 +68,7 @@ body {
     background-color: #66c0f4;
     margin: 6px 0;
     transition: 0.4s;
+    animation: buttonChange 3s infinite;
 }
 
 .hero {
@@ -76,6 +80,7 @@ body {
     font-size: 28px;
     text-align: center;
     padding-top: 20px;
+    animation: colorChange 3s infinite;
 }
 
 header {
@@ -88,6 +93,7 @@ header h1 {
     font-family: 'Orbitron', sans-serif;
     font-size: 72px;
     color: #66c0f4;
+    animation: colorChange 3s infinite;
 }
 
 nav {
@@ -97,6 +103,7 @@ nav {
     position: absolute;
     bottom: 20px;
     width: 100%;
+    animation: colorChange 3s infinite;
 }
 
 nav a {
@@ -105,26 +112,108 @@ nav a {
     text-decoration: none;
     font-size: 16px;
     transition: color 0.3s;
+    animation: colorChange 3s infinite;
 }
 
 nav a:hover {
     color: #66c0f4;
 }
 
-#search,
-#search2,
-#submit {
-    background-color: #ffffff;
+@keyframes colorChange {
+    33% {
+        color: #000000;
+    }
+    100% {
+        color: #66c0f4;
+    }
+}
+
+@keyframes backgroundChange {
+    33% {
+        background-color: #000000;
+    }
+    100% {
+        background-color: #5b5c60;
+    }
+}
+
+@keyframes buttonChange {
+    33% {
+        background-color: #000000;
+    }
+    100% {
+        background-color: #66c0f4;
+    }
+}
+
+.navibar-element {
+    animation:
+            colorChange 3s ease-in-out infinite,
+            backgroundChange 3s ease-in-out infinite;
+}
+
+#search {
+    animation: searchBackgroundChange 3s infinite;
+    background-color: #000000;
     border: none;
     outline: none;
     box-shadow: none;
 }
 
+#search2 {
+    animation: searchBackgroundChange 3s infinite;
+    background-color: #000000;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    margin-left: 50px;
+}
+
+#submit {
+    animation: searchBackgroundChange 3s infinite;
+    background-color: #000000;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+@keyframes searchBackgroundChange {
+    33% {
+        background-color: #000000;
+    }
+    100% {
+        background-color: #ffffff;
+    }
+}
+
 .ImgDesign {
-    filter: brightness(1);
+
+    height: 200px;
+    width: 200px;
+    animation: imageChange 3s infinite;
+}
+
+@keyframes imageChange {
+    33% {
+        filter: brightness(0);
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+@keyframes imageFade {
+    0% {
+        filter: brightness(0);
+    }
+    100% {
+        filter: brightness(1);
+    }
 }
 
 .friendButton {
+    display: inline-block;
+    animation: searchBackgroundChange 3s infinite;
     background-color: #000000;
     border: none;
     outline: none;
@@ -137,42 +226,38 @@ nav a:hover {
     width: 40%;
     height: 40%;
     margin-left: 30%;
+    animation: searchBackgroundChange 3s infinite;
 }
 
 .username {
     margin-left: 50px;
     background-color: blue;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
+    animation: userPasswordBackgroundChange 3s infinite;
 }
 
 .password {
     display: block;
     margin-left: 50px;
     background-color: blue;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
+    animation: userPasswordBackgroundChange 3s infinite;
 }
 
 .loginButton {
-    margin-top: 20px;
-    display: inline-block;
-    padding: 15px 40px;
-    font-size: 18px;
-    background-color: #28a745; /* Green */
-    color: #ffffff;
+    animation: searchBackgroundChange 3s infinite;
+    margin-left: 20%;
+    background-color: #000000;
     border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    outline: none;
+    box-shadow: none;
 }
 
-.loginButton:hover {
-    background-color: #218838;
+@keyframes userPasswordBackgroundChange {
+    33% {
+        background-color: #000000;
+    }
+    100% {
+        background-color: blue;
+    }
 }
 
 .trail {
@@ -182,20 +267,8 @@ nav a:hover {
     background-color: #ff5500;
     border-radius: 50%;
     pointer-events: none;
-    box-shadow: 0 0 20px 5px rgba(255, 85, 0, 0.6);
+    box-shadow: 0 0 20px 5px rgba(255, 85, 0, 0.6); /* Stronger glow */
     left: 0;
     top: 0;
     transition: opacity 0.3s;
 }
-
-
-#gamesTable {
-    background-color: white;
-    color: black;
-}
-
-#gamesTable td, #gamesTable th {
-    background-color: #c1c1c1 !important;
-    color: black;
-}
-
