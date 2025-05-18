@@ -6,11 +6,6 @@ body {
     color: #66c0f4;
     margin: 0;
     padding: 0;
-    animation: colorChange 3s infinite;
-}
-
-.color-change {
-    animation: colorChange 3s infinite;
 }
 
 .sidebar {
