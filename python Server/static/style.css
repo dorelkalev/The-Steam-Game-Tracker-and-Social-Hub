@@ -173,6 +173,7 @@ nav a:hover {
 .username {
     margin-left: 50px;
     background-color: blue;
+    font-color: white;
     animation: userPasswordBackgroundChange 3s infinite;
 }
 
@@ -180,6 +181,7 @@ nav a:hover {
     display: block;
     margin-left: 50px;
     background-color: blue;
+    font-color: white;
     animation: userPasswordBackgroundChange 3s infinite;
 }
 
