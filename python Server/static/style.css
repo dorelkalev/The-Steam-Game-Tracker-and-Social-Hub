@@ -114,33 +114,6 @@ nav a:hover {
     color: #66c0f4;
 }
 
-@keyframes colorChange {
-    33% {
-        opacity: 0%;
-    }
-    100% {
-        opacity: 100%;
-    }
-}
-
-@keyframes backgroundChange {
-    33% {
-        background-color: #000000;
-    }
-    100% {
-        background-color: #5b5c60;
-    }
-}
-
-@keyframes buttonChange {
-    33% {
-        background-color: #000000;
-    }
-    100% {
-        background-color: #66c0f4;
-    }
-}
-
 .navibar-element {
     animation:
             colorChange 3s ease-in-out infinite,
@@ -172,38 +145,11 @@ nav a:hover {
     box-shadow: none;
 }
 
-@keyframes searchBackgroundChange {
-    33% {
-        background-color: #000000;
-    }
-    100% {
-        background-color: #ffffff;
-    }
-}
-
 .ImgDesign {
 
     height: 200px;
     width: 200px;
     animation: imageChange 3s infinite;
-}
-
-@keyframes imageChange {
-    33% {
-        filter: brightness(0);
-    }
-    100% {
-        background-color: transparent;
-    }
-}
-
-@keyframes imageFade {
-    0% {
-        filter: brightness(0);
-    }
-    100% {
-        filter: brightness(1);
-    }
 }
 
 .friendButton {
@@ -244,15 +190,6 @@ nav a:hover {
     border: none;
     outline: none;
     box-shadow: none;
-}
-
-@keyframes userPasswordBackgroundChange {
-    33% {
-        background-color: #000000;
-    }
-    100% {
-        background-color: blue;
-    }
 }
 
 .trail {
