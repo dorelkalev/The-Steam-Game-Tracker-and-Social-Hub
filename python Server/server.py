@@ -6,11 +6,15 @@ from fastapi.templating import Jinja2Templates
 from authentication import fastapi_users, cookie_backend, jwt_backend
 from models import UserCreateModel
 from contextlib import asynccontextmanager
-from database import create_db_and_tables
+from database import create_db_and_tables,async_session_maker
+from steamintegration import initializeSteamAppNameCache, processSteamID
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await create_db_and_tables()
+    initializeSteamAppNameCache()
+    async with async_session_maker() as session:
+        await processSteamID(76561198259864303, session)
     yield
 
 server = FastAPI(lifespan=lifespan)

@@ -9,7 +9,7 @@ from fastapi_users.schemas import CreateUpdateDictModel
 
 class User(SQLAlchemyBaseUserTableUUID, Base):
     steam_id = Column(String(length=64), nullable=True, unique=True)
-    userName = Column(String(length=64), nullable=True, unique=True)
+    userName = Column(String(length=64), nullable=True)
 
 
 class AccessToken(SQLAlchemyBaseAccessTokenTableUUID, Base):
@@ -22,7 +22,12 @@ class SteamData(Base):
     steam_id = Column(String(length=64), index=True)
     date = Column(DateTime)
     payload = Column(Text)
-    active = Column(Boolean, default=True)
+
+class SteamIDs(Base):
+    __tablename__ = "steamids"
+    steam_id = Column(Integer, primary_key=True)
+    active = Column(Boolean)
+
 
 
 class UserCreateModel(CreateUpdateDictModel):

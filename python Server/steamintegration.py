@@ -24,8 +24,31 @@ import asyncio
 import httpx
 import json
 from datetime import datetime
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import insert, select
+from models import SteamData,SteamIDs
 #from models import SteamData
 #from authentication import settings
+
+steam_app_name_lookup = {}
+
+
+def initializeSteamAppNameCache():
+    global steam_app_name_lookup
+
+    url = "https://api.steampowered.com/IStoreService/GetAppList/v1/"
+    params = {"key": "AE88E413FD5384D1164CC3599BA1A82C"}
+
+    response = httpx.get(url, params=params)
+    response.raise_for_status()
+
+    data = response.json()
+    apps = data.get("response", {}).get("apps", [])
+
+    # Build dict: { appid: name }
+    steam_app_name_lookup = {app["appid"]: app["name"] for app in apps}
+    print(steam_app_name_lookup)
+
 
 class settings:
     STEAM_API_KEY="AE88E413FD5384D1164CC3599BA1A82C"
@@ -42,22 +65,8 @@ async def steamRequest(steamID):
         response.raise_for_status()
         return response.json()
 
-async def steamGetAppName(appID):
-    base_url = "https://store.steampowered.com"
-    endpoint = f"{base_url}/api/appdetails"
-    params = {"appids": appID}
-
-    async with httpx.AsyncClient() as client:
-        response = await client.get(endpoint, params=params)
-        response.raise_for_status()
-
-        result = response.json()
-        app_info = result.get(str(appID), {})
-
-        if app_info.get("success") and "data" in app_info:
-            return app_info["data"].get("name", f"App {appID}")
-        else:
-            return f"App {appID}"
+async def steamGetAppName(appID: int) -> str:
+    return steam_app_name_lookup.get(appID, f"App {appID}")
 
 async def formatSteamDataPayload(steam_id: str):
     response = await steamRequest(steam_id)
@@ -89,9 +98,37 @@ async def formatSteamDataPayload(steam_id: str):
         "steam_id": steam_id,
         "date": datetime.utcnow().isoformat(),
         "payload": payload_json,
-        "active": True
     }
 
+
+
+async def insertSteamDataEntry(data: dict, db: AsyncSession):
+    stmt = insert(SteamData).values(
+        steam_id=data["steam_id"],
+        date=datetime.fromisoformat(data["date"]),
+        payload=data["payload"],
+    )
+    await db.execute(stmt)
+    await db.commit()
+
+
+async def ensureSteamIDExists(steam_id: int, db: AsyncSession):
+    # Check if steam_id already exists
+    result = await db.execute(select(SteamIDs).where(SteamIDs.steam_id == steam_id))
+    existing = result.scalar_one_or_none()
+
+    if existing is None:
+        # Not found, insert with active=False
+        new_entry = SteamIDs(steam_id=steam_id, active=False)
+        db.add(new_entry)
+        await db.commit()
+
+
+
+async def processSteamID(steam_id: int, db: AsyncSession):
+    await ensureSteamIDExists(steam_id, db)
+    payload = await formatSteamDataPayload(str(steam_id))  # formatSteamDataPayload expects a str
+    await insertSteamDataEntry(payload, db)
 
 
 
