@@ -36,7 +36,7 @@ async function gameSearch() {
     }
 }
 
-// Friend Info
+
 async function showFriendInfo() {
     try {
         const response = await fetch('/api/friends', {
@@ -115,7 +115,7 @@ async function communityButton(event) {
     }
 }
 
-// Sidebar Navigation
+
 function openNav() {
     document.getElementById("mySidebar").style.left = "0";
 }
@@ -124,19 +124,19 @@ function closeNav() {
     document.getElementById("mySidebar").style.left = "-250px";
 }
 
-// Redirect to Dashboard after Register
+
 function redirectToDashboard(event) {
     event.preventDefault();
     window.location.href = "/dashboard";
 }
 
-// Optional fade effect
+
 const fadeEffect = document.querySelector('.fade-effect');
 if (fadeEffect) {
     fadeEffect.style.animation = 'fadeInOut 3s infinite';
 }
 
-// Save user info to localStorage for dashboard use
+
 function saveUserInfo({ username, email = "", first_name = "", last_name = "" }) {
     const today = new Date().toISOString().split("T")[0];
     localStorage.setItem("user", JSON.stringify({
@@ -147,4 +147,5 @@ function saveUserInfo({ username, email = "", first_name = "", last_name = "" })
         registered_at: today
     }));
 }
+
 

@@ -1,67 +1,55 @@
-import uuid
-
-from fastapi_users.authentication import CookieTransport, AuthenticationBackend
-from fastapi_users.authentication.strategy import AccessTokenDatabase, DatabaseStrategy
-from fastapi_users.db import SQLAlchemyUserDatabase
-from fastapi_users import BaseUserManager, UUIDIDMixin, FastAPIUsers,schemas
-from fastapi import Depends
-from fastapi_users_db_sqlalchemy.access_token import SQLAlchemyAccessTokenDatabase
-from sqlalchemy.ext.asyncio import AsyncSession
+import os
 from typing import AsyncGenerator
-from pydantic_settings import BaseSettings, SettingsConfigDict
-from typing import Optional
-
-
+from fastapi import Depends
+from fastapi_users import FastAPIUsers, BaseUserManager, IntegerIDMixin
+from fastapi_users.authentication import CookieTransport, JWTStrategy, AuthenticationBackend
+from fastapi_users.db import SQLAlchemyUserDatabase
+from pydantic import BaseModel, EmailStr
+from models import User
 from database import get_async_session
-from models import User,AccessToken
 
-#Environment variables
-class Environment(BaseSettings):
-    model_config = SettingsConfigDict(env_file='settings.env')
-    SECRET:str
-    STEAM_API_KEY:str
-settings = Environment()
+# ✅ Custom User Create Schema
+class UserCreateSchema(BaseModel):
+    email: EmailStr
+    password: str
+    steam_id: str
+    userName: str
 
-#transport setup
-cookie_transport = CookieTransport(cookie_name="auth",cookie_max_age=3600)
+# Cookie transport setup
+cookie_transport = CookieTransport(cookie_name="steam_cookie", cookie_max_age=3600)
+
+# Cookie-based authentication backend
+cookie_backend = AuthenticationBackend(
+    name="cookie",
+    transport=cookie_transport,
+    get_strategy=lambda: JWTStrategy(secret=os.getenv("SECRET", "SUPERSECRET"), lifetime_seconds=3600),
+)
 
 
+jwt_backend = AuthenticationBackend(
+    name="jwt",
+    transport=cookie_transport,
+    get_strategy=lambda: JWTStrategy(secret=os.getenv("SECRET", "SUPERSECRET"), lifetime_seconds=3600),
+)
 
-async def get_user_db(session: AsyncSession = Depends(get_async_session)):
-    yield SQLAlchemyUserDatabase(session, User)
-async def get_access_token_db( session: AsyncSession = Depends(get_async_session),):
-    yield SQLAlchemyAccessTokenDatabase(session, AccessToken)
+async def get_user_db():
+    async for session in get_async_session():
+        yield SQLAlchemyUserDatabase(session, User)
 
-SECRET = settings.SECRET
 
-class UserManager(UUIDIDMixin,BaseUserManager[User, uuid.UUID]):
-    reset_password_token_secret = SECRET
-    verification_token_secret = SECRET
+class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
+    reset_password_token_secret = os.getenv("SECRET", "SUPERSECRET")
+    verification_token_secret = os.getenv("SECRET", "SUPERSECRET")
+
     async def on_after_register(self, user: User, request=None):
         print(f"User {user.id} has registered.")
 
-async def get_user_manager(user_db=Depends(get_user_db)) -> AsyncGenerator[UserManager, None]:
+
+async def get_user_manager(user_db=Depends(get_user_db)):
     yield UserManager(user_db)
 
-def get_database_strategy(access_token_db: AccessTokenDatabase[AccessToken] = Depends(get_access_token_db),) -> DatabaseStrategy:
-    return DatabaseStrategy(access_token_db, lifetime_seconds=3600)
 
-auth_backend = AuthenticationBackend(
-    name="cookie-database",
-    transport=cookie_transport,
-    get_strategy=get_database_strategy,
+fastapi_users = FastAPIUsers[User, int](
+    get_user_manager,
+    [cookie_backend, jwt_backend],
 )
-
-fastapi_users = FastAPIUsers[User,uuid.UUID](get_user_manager,[auth_backend])
-
-
-class UserRead(schemas.BaseUser[uuid.UUID]):
-    steam_id: Optional[str]
-    userName: str
-class UserCreate(schemas.BaseUserCreate):
-    userName: str
-    steam_id: Optional[str]
-class UserUpdate(schemas.BaseUserUpdate):
-    userName: str
-    steam_id: Optional[str]
-
