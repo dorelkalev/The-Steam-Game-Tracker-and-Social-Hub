@@ -22,9 +22,11 @@ async def get_steamData_db(session: AsyncSession = Depends(get_async_session)):
 """
 import asyncio
 import httpx
-#from datetime import datetime
+import json
+from datetime import datetime
 #from models import SteamData
 #from authentication import settings
+
 class settings:
     STEAM_API_KEY="AE88E413FD5384D1164CC3599BA1A82C"
 
@@ -43,18 +45,57 @@ async def steamRequest(steamID):
 async def steamGetAppName(appID):
     base_url = "https://store.steampowered.com"
     endpoint = f"{base_url}/api/appdetails"
-    params = {
-        "appids":appID
-    }
+    params = {"appids": appID}
+
     async with httpx.AsyncClient() as client:
         response = await client.get(endpoint, params=params)
         response.raise_for_status()
-        return response.json()[str(appID)]["data"]["name"]
+
+        result = response.json()
+        app_info = result.get(str(appID), {})
+
+        if app_info.get("success") and "data" in app_info:
+            return app_info["data"].get("name", f"App {appID}")
+        else:
+            return f"App {appID}"
+
+async def formatSteamDataPayload(steam_id: str):
+    response = await steamRequest(steam_id)
+    games = response.get("response", {}).get("games", [])
+
+    enriched_games = []
+    for game in games:
+        print(game.get("appid"))
+        game_data = {
+            "appid": game.get("appid"),
+            "name": await steamGetAppName(game.get("appid")),
+            "playtime_forever": game.get("playtime_forever", 0),
+            "playtime_windows": game.get("playtime_windows_forever", 0),
+            "playtime_mac": game.get("playtime_mac_forever", 0),
+            "playtime_linux": game.get("playtime_linux_forever", 0),
+            "playtime_deck": game.get("playtime_deck_forever", 0),
+            "playtime_disconnected": game.get("playtime_disconnected", 0),
+            "last_played": game.get("rtime_last_played", 0)
+        }
+        enriched_games.append(game_data)
+
+    payload_json = json.dumps({
+        "game_count": len(enriched_games),
+        "games": enriched_games
+    })
+    print(response)
+
+    return {
+        "steam_id": steam_id,
+        "date": datetime.utcnow().isoformat(),
+        "payload": payload_json,
+        "active": True
+    }
 
 
 
 
-async def test():
+async def test(): # testing function for development purposes
     """
     result = await steamRequest("76561198259864303")
 
@@ -62,4 +103,7 @@ async def test():
     """
     appName = await steamGetAppName(420)
     print(appName)
-#asyncio.run(test())
+    """
+    result = formatSteamDataPayload("76561198259864303")
+    print(result)
+    """

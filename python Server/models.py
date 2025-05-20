@@ -23,3 +23,8 @@ class SteamData(Base):
     date = Column(DateTime)
     payload = Column(Text)
     active = Column(Boolean, default=True)
+
+class AppIDName(Base):
+    __tablename__ = "appidname"
+    appID = Column(Integer, primary_key=True)
+    gameName = Column(String(length=64))

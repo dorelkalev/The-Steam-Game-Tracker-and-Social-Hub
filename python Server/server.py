@@ -13,13 +13,13 @@ from fastapi.templating import Jinja2Templates
 from authentication import fastapi_users,auth_backend,UserRead,UserCreate,UserUpdate
 from contextlib import asynccontextmanager
 from database import create_db_and_tables
-
-
+from steamintegration import formatSteamDataPayload
 
 #database setup
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await create_db_and_tables()
+    await formatSteamDataPayload("76561198259864303")
     yield
 
 
